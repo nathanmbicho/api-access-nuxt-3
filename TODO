@@ -30,3 +30,8 @@ COMPOSABLES
 They are names using use[Name] to diff from regular methods
 
 Utils - If it doesn't use refs, computer props, watchers, or any other vue logic, its just a regular js function
+
+
+//NUXI
+nuxi add composable use[Name]
+nuxi add component ComponentName
