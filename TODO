@@ -25,3 +25,8 @@ to read the params in file {{ $route.params.contactNameSlug }}, {{ $route.params
 optional route params - (we use double brackets)
 ./pages/contact/[contactNameSlug]/[[workPlace]].vue  - url/contact/nathan-mbicho or  url/contact/nathan-mbicho/safaricom-plc
 
+COMPOSABLES
+- A reusable piece of logic that uses vue's reactivity system. Better way to organize our logic and use it in multiple components.
+They are names using use[Name] to diff from regular methods
+
+Utils - If it doesn't use refs, computer props, watchers, or any other vue logic, its just a regular js function
