@@ -1,0 +1,27 @@
+- ROUTES
+All goes in pages folder
+- routes are files based
+./pages/about.vue - url/about
+
+- nested routes
+files inside another file
+./pages/about.vue - url/about
+but has ./pages/about/company-profile.vue
+
+HMR - Hot Model Reloading - updates as changes are being made
+
+we use <NuxtPage /> on the parent file about.vue, which will get anything inside about folder and fill in the <NuxtPage />
+
+- dynamic routes
+routes based on params
+./pages/contact/[contactNameSlug].vue - url/contact/nathan-mbicho, - url/contact/eliakim-matutu
+./pages/contact/[contactNameSlug]/work/[workPlace].vue  - url/contact/nathan-mbicho/work/safaricom-plc
+./pages/contact-[contactNameSlug]/work-[workPlace].vue - url/contact-eliakim-matutu/work-just-good-tech
+./pages/[contactNameSlug]-[workPlace].vue - url/eliakimmatutu-justgoodtech (careful with separating object)
+
+to read the params in file {{ $route.params.contactNameSlug }}, {{ $route.params.workPlace }}
+- $route.params.slugName
+
+optional route params - (we use double brackets)
+./pages/contact/[contactNameSlug]/[[workPlace]].vue  - url/contact/nathan-mbicho or  url/contact/nathan-mbicho/safaricom-plc
+
