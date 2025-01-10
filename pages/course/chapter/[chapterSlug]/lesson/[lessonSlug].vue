@@ -22,6 +22,37 @@
         return `${lesson.value.title} - ${course.title}`
       })
     })
+
+    //mark course complete
+    const progress = useLocalStorage('progress', []);
+
+    const isLessonComplete = computed(() => {
+      if (!progress.value[chapter.value.number - 1]) {
+        return false;
+      }
+
+      if (
+        !progress.value[chapter.value.number - 1][
+          lesson.value.number - 1
+        ]
+      ) {
+        return false;
+      }
+
+      return progress.value[chapter.value.number - 1][
+        lesson.value.number - 1
+      ];
+    });
+
+    const toggleComplete = () => {
+      if (!progress.value[chapter.value.number - 1]) {
+        progress.value[chapter.value.number - 1] = [];
+      }
+
+      progress.value[chapter.value.number - 1][
+        lesson.value.number - 1
+      ] = !isLessonComplete.value;
+    };
 </script>
 <template>
     <div>
@@ -50,5 +81,9 @@
         :videoId="lesson.videoId"
       />
       <p>{{ lesson.text }}</p>
+      <LessonCompleteButton
+        :model-value="isLessonComplete"
+        @update:model-value="toggleComplete"
+      />
     </div>
   </template>
