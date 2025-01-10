@@ -2,16 +2,25 @@
     const course = useCourse();
     const route = useRoute();
 
+    //get chapter
     const chapter = computed(() => {
         return course.chapters.find(
             (chapter) => chapter.slug === route.params.chapterSlug
         )
     })
 
+    //get lesson
     const lesson = computed(() => {
         return chapter.value.lessons.find(
             (lesson) => lesson.slug === route.params.lessonSlug
         )
+    })
+
+    //set header
+    useHead({
+      title: computed(() => {
+        return `${lesson.value.title} - ${course.title}`
+      })
     })
 </script>
 <template>
